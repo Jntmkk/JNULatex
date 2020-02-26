@@ -1,0 +1,38 @@
+%!TEX program = xelatex
+\documentclass[UTF8,a4paper,zihao=-4]{jnuart}% UTF-8编码，A4纸张，默认字号为小四
+\author{Y}
+\title{Hello \LaTeX}
+\date{\today}
+\usepackage{lipsum}
+\begin{document}
+    % 有关论文信息，如指导老师信息等，请去此文件中更改
+    \include{template/userdeclaration}       
+    \maketitle                                          % 生成简单标题页、无用可注释
+    \include{template/home}                         % 首页
+    \include{template/declaration}                  % 独创性声明、授权声明
+    \include{template/abstract}                     % 中英摘要
+
+    % 生成目录、图标清单 请勿更改 生成顺序可根据需要调整 
+    % 目录
+    \tableofcontents                                    % 生成目录
+    % 表格
+    % \tableofcontents                                    % 生成表格清单
+    % 图片
+    % \tableofcontents                                    % 生成图片清单
+    % 生成目录、图标清单 请勿更改 
+
+
+    \include{template/introduction}
+    \include{template/sections/sections1}
+    \include{template/conclusion}
+
+    % \bibliography{paperef}
+
+    \include{template/appendix}
+
+    % \printindex
+
+    \include{template/paperlist}
+    \include{template/acknowledgement}
+    hello world
+\end{document}

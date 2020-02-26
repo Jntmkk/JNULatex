@@ -4,3 +4,7 @@
 *.aux
 *.toc
 *.rtf
+*.pdf
+elegantpaper-cn.tex
+elegantpaper.cls
+.\out
