@@ -30,7 +30,7 @@
 % 纸张尺寸设置
 
 % 字体、字号、行间距、字间距设置
-\newcommand{\stf}{\songti}       %% 宋体
+\newcommand{\stf}{\songti}       %% 宋体h
 \newcommand{\htf}{\heiti}        %% 黑体
 \newcommand{\fsf}{\fangsong}     %% 仿宋
 \newcommand{\ksf}{\kaishu}       %% 楷体
