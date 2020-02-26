@@ -1,0 +1,6 @@
+.vscode\
+*.gz
+*.log
+*.aux
+*.toc
+*.rtf
