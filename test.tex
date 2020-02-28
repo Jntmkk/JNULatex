@@ -4,13 +4,18 @@
 \title{Hello \LaTeX}
 \date{\today}
 \usepackage{lipsum}
+\usepackage{layout}
 \begin{document}
     % 有关论文信息，如指导老师信息等，请去此文件中更改
-    \include{template/userdeclaration}       
     \maketitle                                                  % 生成简单标题页、无用可注释
-    \include{template/frontmatter/home}                         % 首页
-    \include{template/frontmatter/declaration}                  % 独创性声明、授权声明
-    \include{template/frontmatter/abstract}                     % 中英摘要
+    % \newpage
+    \makehome
+    \makedeclaretion
+    \layout
+    \clearpage
+    \input{template/frontmatter/home}                         % 首页
+    \input{template/frontmatter/declaration}                  % 独创性声明、授权声明
+    \input{template/frontmatter/abstract}                     % 中英摘要
 
     % 生成目录、图标清单 请勿更改 生成顺序可根据需要调整 
     % 目录
@@ -22,16 +27,16 @@
     % 生成目录、图标清单 请勿更改 
 
 
-    \include{template/mainmatter/introduction}
-    \include{template/mainmatter/sections/sections1}
-    \include{template/mainmatter/conclusion}
+    \input{template/mainmatter/introduction}
+    \input{template/mainmatter/sections/sections1}
+    \input{template/mainmatter/conclusion}
 
     % \bibliography{paperef}
 
-    \include{template/appendix}
+    \input{template/appendix}
 
     % \printindex
 
-    \include{template/backmatter/paperlist}
-    \include{template/backmatter/acknowledgement}
+    \input{template/backmatter/paperlist}
+    \input{template/backmatter/acknowledgement}
 \end{document}
