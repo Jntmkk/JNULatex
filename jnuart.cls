@@ -4,8 +4,43 @@
 % Lastest Version: https://github.com/ElegantLaTeX/ElegantPaper
 
 % --- Class structure: identification part
-\ProvidesClass{jnuart}[2019/10/17 v0.01 jnuart Paper class]
 \NeedsTeXFormat{LaTeX2e} 
+\ProvidesClass{jnuart}[2019/10/17 v0.01 jnuart Paper class]
+% ---------------------------------------------------------------%
+% ->> Declare options
+% ---------------------------------------------------------------%
+%
+\newcommand{\stypath}{}
+\newcommand{\thisclassname}{jnuart}
+\IfFileExists{\stypath jnucom.cfg}{
+    \input{\stypath jnucom.cfg}
+}{
+    \PackageError{\thisclassname}{the file 'jnuzh.cfg' does not exist at path '\stypath'.More details '\githubguideaddr'}
+}
+\DeclareOption{eng}{
+    \AtEndOfPackage{% class cfg loaded after package to make preamble commands take effect
+    \IfFileExists{\stypath jnueng.cfg}{
+        \input{\stypath jnuzh.cfg}
+    }{
+        \PackageError{\thisclassname}{the file 'jnueng.cfg' does not exist at path '\stypath' specified by 'eng' option.More details \githubguideaddr}
+    }
+    }
+}
+\DeclareOption{zh}{
+    \AtEndOfPackage{% class cfg loaded after package to make preamble commands take effect
+    \IfFileExists{\stypath jnuzh.cfg}{
+        \input{\stypath jnuzh.cfg}
+    }{
+        \PackageError{\thisclassname}{the file 'jnuzh.cfg' does not exist at path '\stypath' specified by 'zh' option.More details \githubguideaddr}
+    }
+    }
+}
+\ExecuteOptions{zh,a4paper,zihao=-4}
+\DeclareOption*{
+    \PassOptionsToClass{\CurrentOption}{ctexart}
+}
+\ProcessOptions\relax
+\LoadClass{ctexart}
 
 
 
@@ -16,10 +51,7 @@
 \RequirePackage{etoolbox}       % 强大的工具包
 \RequirePackage{calc}           % 数值计算包
 
-% 默认载入 ctexart 宏包 继承默认属性，修改部分样式 适配不同论文格式要求
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexart}}
-\ProcessKeyvalOptions*\relax
-\LoadClass{ctexart}  
+% \ProcessKeyvalOptions*\relax
 
 % 新建命令
 
@@ -29,26 +61,7 @@
 
 % 纸张尺寸设置
 
-% 字体、字号、行间距、字间距设置
-\newcommand{\stf}{\songti}       %% 宋体h
-\newcommand{\htf}{\heiti}        %% 黑体
-\newcommand{\fsf}{\fangsong}     %% 仿宋
-\newcommand{\ksf}{\kaishu}       %% 楷体
-\newcommand{\lsf}{\lishu}        %% 隶书
-\newcommand{\yyf}{\youyuan}      %% 幼圆
-\newcommand{\yhf}{\yahei}        %% 雅黑
 
-\newcommand{\xls}{\tiny}         %% 小六
-\newcommand{\lhs}{\scriptsize}   %% 六号
-\newcommand{\xws}{\footnotesize} %% 小五 
-\newcommand{\whs}{\small}        %% 五号
-% \newcommand{\xss}{\normalsize}   %% 小四 
-\newcommand{\shs}{\fontsize{14pt}{21pt}\selectfont}  %% ctex缺少直接对应的字号  
-\newcommand{\xss}{\large}        %% 小三
-\newcommand{\xes}{\Large}        %% 小二
-\newcommand{\ehs}{\LARGE}        %% 二号
-\newcommand{\xys}{\huge}         %% 小一
-\newcommand{\yhs}{\Huge}         %% 一号
 % \newcommand{\}{\}
 \linespread{1.5}                %行距
 \ziju{0.065}                    %字间距
