@@ -9,3 +9,8 @@ elegantpaper-cn.tex
 elegantpaper.cls
 .\out
 ucasthesis.cls
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
