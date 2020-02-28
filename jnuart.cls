@@ -60,7 +60,7 @@
 \BeforeBeginEnvironment{abstract}{\ifsetabsnumstyle \pagenumbering{Roman}\pagestyle{plain}\fi \setabsnumstylefalse}
 \AfterEndEnvironment{abstract}{\setabsnumstylefalse\clearpage}
 \AtBeginEnvironment{abstract}{\phantomsection\addcontentsline{toc}{section}{\abstractname}}
-\AfterPreamble{\setcounter{tocdepth}{2}\pagestyle{empty}}
+\AfterPreamble{\setcounter{tocdepth}{2}\setcounter{secnumdepth}{4}\pagestyle{empty}}
 
 \IfFileExists{\stypath jnucom.cfg}{
     \input{\stypath jnucom.cfg}}{
@@ -150,6 +150,8 @@
 
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
+  \numberwithin{figure}{section}
+  \numberwithin{table}{section}
 \RequirePackage{amssymb}
 
 \RequirePackage{tocbibind}% 目录自引用
@@ -170,9 +172,14 @@
 \RequirePackage[numbers,sort&compress]{natbib}
 \bibliographystyle{plain}
 
-% 摘要
+\RequirePackage{booktabs}
+\RequirePackage{graphicx}
 \RequirePackage{abstract}
-
+\RequirePackage{fancyhdr}
+\fancyhead{}
+\fancyhead[C]{\textbf{\schoolName\degree 毕业论文}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.6pt}
 
 % \newcommand{\}{\}
 \linespread{1.5}                %行距

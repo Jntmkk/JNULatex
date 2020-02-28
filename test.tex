@@ -3,6 +3,7 @@
 \author{Y}
 \title{Hello \LaTeX}
 \date{\today}
+\setcounter{secnumdepth}{3}
 \usepackage{lipsum}
 \usepackage{layout}
 \begin{document}
@@ -26,11 +27,11 @@
     % 生成目录、图标清单 请勿更改 
 
     \pagenumbering{arabic}
+    \pagestyle{fancy}
 
-
-    \include{template/mainmatter/introduction}
+    % \include{template/mainmatter/introduction}
     \include{template/mainmatter/sections/sections1}
-    \include{template/mainmatter/conclusion}
+    % \include{template/mainmatter/conclusion}
 
     \bibliography{bib/ref}
 
