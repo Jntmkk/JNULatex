@@ -54,12 +54,17 @@
 \newif\ifsetabsnumstyle \setabsnumstyletrue
 \apptocmd{\maketitle}{\emptypagestylewrapper}{}{}
 % \apptocmd{\tableofcontents}{\thispagestyle{plain}\clearpage}{}{}
-% \pretocmd{\tableofcontents}{\clearpage\phantomsection}{}{}
+\pretocmd{\bibliography}{\phantomsection}{}{}
+% \pretocmd{\printindex}{\phantomsection}{}{}
+\pretocmd{\usection}{\phantomsection\addcontentsline{toc}{section}{Appendix}}{
+  \ClassInfo{JNU:Success--------------------------}{}
+}{\ClassInfo{JNU:Faliue---------------------------}{}}
 
 \BeforeBeginEnvironment{abstract}{\ifsetabsnumstyle \pagenumbering{Roman}\pagestyle{plain}\fi \setabsnumstylefalse}
 \AfterEndEnvironment{abstract}{\setabsnumstylefalse\clearpage}
 \AtBeginEnvironment{abstract}{\phantomsection\addcontentsline{toc}{section}{\abstractname}}
-\AfterPreamble{\pagestyle{empty}}
+\AfterPreamble{\setcounter{tocdepth}{2}\pagestyle{empty}}
+
 \IfFileExists{\stypath jnucom.cfg}{
     \input{\stypath jnucom.cfg}}{
     \ClassError{\thisclassname}{the file 'jnuzh.cfg' does not exist at path '\stypath'.More details '\githubguideaddr'}}
@@ -137,6 +142,15 @@
 \titlespacing{\subsection}{0pt}{*1}{*1}
 \titlespacing{\subsubsection}{0pt}{*0.5}{*0.5}
 
+% \titleclass{\usection}{straight}[\section]
+% \newcounter{usection}
+% \titleformat{\usection}[hang]{\centering\xss\lsf}{\usection}{1em}{}
+% \titlespacing{\usection}{0pt}{*15}{*3}
+\newcommand{\beforeusection}{}
+\newcommand{\afterusection}{}
+\newcommand{\usectionfont}{\xss\bfseries}
+\newcommand{\usection}[1]{\beforeusection \centering{\usectionfont #1} \afterusection}
+
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -144,7 +158,7 @@
 \RequirePackage{tocbibind}% 目录自引用
 \RequirePackage{tocloft}
 \setlength{\cftsubsecindent}{0em}
-\renewcommand{\cfttoctitlefont}{\centering\Large\bfseries}
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
 \renewcommand{\cftaftertoctitle}{}
 \renewcommand{\cftsecdotsep}{\cftsubsecdotsep}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
@@ -154,7 +168,10 @@
 \renewcommand{\cftsubsecpagefont}{\normalfont (\ }
 \renewcommand{\cftsubsecafterpnum}{\ )}
 
-
+\RequirePackage{makeidx}
+\makeindex
+\RequirePackage[numbers,sort&compress]{natbib}
+\bibliographystyle{plain}
 
 % 摘要
 \RequirePackage{abstract}
