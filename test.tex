@@ -9,34 +9,35 @@
     % 有关论文信息，如指导老师信息等，请去此文件中更改
     \maketitle                                                  % 生成简单标题页、无用可注释
     % \newpage
-    \makehome
-    \makedeclaretion
     \layout
     \clearpage
-    \input{template/frontmatter/home}                         % 首页
-    \input{template/frontmatter/declaration}                  % 独创性声明、授权声明
-    \input{template/frontmatter/abstract}                     % 中英摘要
+    \makehome
+    \makedeclaretion
+    \include{template/frontmatter/abstract}                     % 中英摘要
 
     % 生成目录、图标清单 请勿更改 生成顺序可根据需要调整 
     % 目录
     \tableofcontents                                    % 生成目录
+    \clearpage
     % 表格
     % \tableofcontents                                    % 生成表格清单
     % 图片
     % \tableofcontents                                    % 生成图片清单
     % 生成目录、图标清单 请勿更改 
 
+    \pagenumbering{arabic}
 
-    \input{template/mainmatter/introduction}
-    \input{template/mainmatter/sections/sections1}
-    \input{template/mainmatter/conclusion}
+
+    \include{template/mainmatter/introduction}
+    \include{template/mainmatter/sections/sections1}
+    \include{template/mainmatter/conclusion}
 
     % \bibliography{paperef}
 
-    \input{template/appendix}
+    \include{template/appendix}
 
     % \printindex
 
-    \input{template/backmatter/paperlist}
-    \input{template/backmatter/acknowledgement}
+    \include{template/backmatter/paperlist}
+    \include{template/backmatter/acknowledgement}
 \end{document}

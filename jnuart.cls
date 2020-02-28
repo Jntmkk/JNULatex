@@ -52,13 +52,14 @@
 
 % hook
 \newif\ifsetabsnumstyle \setabsnumstyletrue
-\newif\ifsetsecnumstyle \setsecnumstyletrue
 \apptocmd{\maketitle}{\emptypagestylewrapper}{}{}
-\apptocmd{\tableofcontents}{\thispagestyle{plain}}{}{}
+% \apptocmd{\tableofcontents}{\thispagestyle{plain}\clearpage}{}{}
+% \pretocmd{\tableofcontents}{\clearpage\phantomsection}{}{}
+
 \BeforeBeginEnvironment{abstract}{\ifsetabsnumstyle \pagenumbering{Roman}\pagestyle{plain}\fi \setabsnumstylefalse}
-\AfterEndEnvironment{abstract}{\setabsnumstylefalse\newpage}
+\AfterEndEnvironment{abstract}{\setabsnumstylefalse\clearpage}
+\AtBeginEnvironment{abstract}{\phantomsection\addcontentsline{toc}{section}{\abstractname}}
 \AfterPreamble{\pagestyle{empty}}
-% \apptocmd{\section}{\ifsetsecnumstyle \pagenumbering{arabic}\fi \setsecnumstylefalse}
 \IfFileExists{\stypath jnucom.cfg}{
     \input{\stypath jnucom.cfg}}{
     \ClassError{\thisclassname}{the file 'jnuzh.cfg' does not exist at path '\stypath'.More details '\githubguideaddr'}}
@@ -127,6 +128,33 @@
     \fi
   },
 }
+\RequirePackage{titlesec}
+\titleformat{\section}[hang]{\xss\htf}{\thesection}{1em}{}
+\titleformat{\subsection}[hang]{\shs\htf}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}[hang]{\shs\htf}{\thesubsubsection}{0.5em}{}
+
+\titlespacing{\section}{0pt}{*5}{*3}
+\titlespacing{\subsection}{0pt}{*1}{*1}
+\titlespacing{\subsubsection}{0pt}{*0.5}{*0.5}
+
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+
+\RequirePackage{tocbibind}% 目录自引用
+\RequirePackage{tocloft}
+\setlength{\cftsubsecindent}{0em}
+\renewcommand{\cfttoctitlefont}{\centering\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{}
+\renewcommand{\cftsecdotsep}{\cftsubsecdotsep}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftdot}{$\cdot$}
+\renewcommand{\cftsecpagefont}{\normalfont (\ }
+\renewcommand{\cftsecafterpnum}{\ )}
+\renewcommand{\cftsubsecpagefont}{\normalfont (\ }
+\renewcommand{\cftsubsecafterpnum}{\ )}
+
+
 
 % 摘要
 \RequirePackage{abstract}
