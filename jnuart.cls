@@ -56,9 +56,6 @@
 % \apptocmd{\tableofcontents}{\thispagestyle{plain}\clearpage}{}{}
 \pretocmd{\bibliography}{\phantomsection}{}{}
 % \pretocmd{\printindex}{\phantomsection}{}{}
-\pretocmd{\usection}{\phantomsection\addcontentsline{toc}{section}{Appendix}}{
-  \ClassInfo{JNU:Success--------------------------}{}
-}{\ClassInfo{JNU:Faliue---------------------------}{}}
 
 \BeforeBeginEnvironment{abstract}{\ifsetabsnumstyle \pagenumbering{Roman}\pagestyle{plain}\fi \setabsnumstylefalse}
 \AfterEndEnvironment{abstract}{\setabsnumstylefalse\clearpage}
@@ -142,14 +139,14 @@
 \titlespacing{\subsection}{0pt}{*1}{*1}
 \titlespacing{\subsubsection}{0pt}{*0.5}{*0.5}
 
-% \titleclass{\usection}{straight}[\section]
-% \newcounter{usection}
-% \titleformat{\usection}[hang]{\centering\xss\lsf}{\usection}{1em}{}
-% \titlespacing{\usection}{0pt}{*15}{*3}
-\newcommand{\beforeusection}{}
-\newcommand{\afterusection}{}
-\newcommand{\usectionfont}{\xss\bfseries}
-\newcommand{\usection}[1]{\beforeusection \centering{\usectionfont #1} \afterusection}
+\titleclass{\usection}{straight}[\section]
+\newcounter{usection}
+\titleformat{\usection}[hang]{\centering\xss\bfseries}{\usection}{1em}{}
+\titlespacing{\usection}{0pt}{*15}{*3}
+% \newcommand{\beforeusection}{}
+% \newcommand{\afterusection}{}
+% \newcommand{\usectionfont}{\xss\bfseries}
+% \newcommand{\usection}[1]{\beforeusection \centering{\usectionfont #1} \afterusection}
 
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
