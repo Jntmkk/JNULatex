@@ -30,11 +30,22 @@
 \DeclareVoidOption{cn}{\ekv{lang = cn}}
 \DeclareVoidOption{en}{\ekv{lang = en}}
 
+\DeclareStringOption[read]{mode}
+\DeclareVoidOption{read}{\ekv{mode = read}}
+\DeclareVoidOption{print}{\ekv{mode = print}}
+
 
 
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessKeyvalOptions*\relax
 \LoadClass{ctexart}
+
+\RequirePackage{xcolor}
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+  \numberwithin{figure}{section}
+  \numberwithin{table}{section}
+\RequirePackage{amssymb}
 
 \ifdefstring{\JNU@lang}{cn}{
     \IfFileExists{\stypath jnucn.cfg}{
@@ -48,6 +59,17 @@
       \input{\stypath jnueng.cfg}}{
       \ClassError{\thisclassname}{the file 'jnueng.cfg' does not exist at path '\stypath' specified by 'eng' option.More details \githubguideaddr}}
 }{}
+
+
+\ifdefstring{\JNU@mode}{read}{
+  \providecolor{winered}{rgb}{0.2,0.3,0.4}
+}{}
+\ifdefstring{\JNU@mode}{print}{
+  \providecolor{winered}{rgb}{0.2,0.3,0.4}
+}{}
+% \ifdefstring{\JNU@mode}{print}{
+%   \definecolor{winered}{rgb}{0,0,0}
+% }
 
 
 % hook
@@ -167,11 +189,7 @@
 % \newcommand{\usectionfont}{\xss\bfseries}
 % \newcommand{\usection}[1]{\beforeusection \centering{\usectionfont #1} \afterusection}
 
-\RequirePackage{amsthm}
-\RequirePackage{amsmath}
-  \numberwithin{figure}{section}
-  \numberwithin{table}{section}
-\RequirePackage{amssymb}
+
 
 
 
