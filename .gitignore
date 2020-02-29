@@ -14,3 +14,5 @@ ucasthesis.cls
 *.idx
 *.ilg
 *.ind
+*.lot
+*.lof

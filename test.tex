@@ -9,10 +9,11 @@
 \begin{document}
     % 有关论文信息，如指导老师信息等，请去此文件中更改
     \maketitle                                                  % 生成简单标题页、无用可注释
-    % \newpage
+    \clearpage
     \layout
     \clearpage
     \makehome
+    \clearpage
     \makedeclaretion
     \include{template/frontmatter/abstract}                     % 中英摘要
 
@@ -20,14 +21,15 @@
     % 目录
     \tableofcontents                                    % 生成目录
     \clearpage
-    % 表格
-    % \tableofcontents                                    % 生成表格清单
+    % 表格                           
+    \listoftables                                    % 生成表格清单
+    \clearpage
     % 图片
-    % \tableofcontents                                    % 生成图片清单
-    % 生成目录、图标清单 请勿更改 
-
+    \listoffigures                                % 生成图片清单
+    \clearpage
     \pagenumbering{arabic}
     \pagestyle{fancy}
+    % 生成目录、图标清单 请勿更改 
 
     % \include{template/mainmatter/introduction}
     \include{template/mainmatter/sections/sections1}

@@ -62,6 +62,8 @@
 \AtBeginEnvironment{abstract}{\phantomsection\addcontentsline{toc}{section}{\abstractname}}
 \AfterPreamble{\setcounter{tocdepth}{2}\setcounter{secnumdepth}{4}\pagestyle{empty}}
 
+\RequirePackage{abstract} % load before input file 'jnucom.cfg'
+
 \IfFileExists{\stypath jnucom.cfg}{
     \input{\stypath jnucom.cfg}}{
     \ClassError{\thisclassname}{the file 'jnuzh.cfg' does not exist at path '\stypath'.More details '\githubguideaddr'}}
@@ -100,6 +102,22 @@
   \end{flushleft}
 }
 
+\RequirePackage{tocbibind}% 目录自引用
+\RequirePackage{tocloft}    % load before subfig
+\setlength{\cftsubsecindent}{0em}
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{}
+\renewcommand{\cftsecdotsep}{\cftsubsecdotsep}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftdot}{$\cdot$}
+\renewcommand{\cftsecpagefont}{\normalfont (\ }
+\renewcommand{\cftsecafterpnum}{\ )}
+\renewcommand{\cftsubsecpagefont}{\normalfont (\ }
+\renewcommand{\cftsubsecafterpnum}{\ )}
+
+\RequirePackage{subfig}
+% \RequirePackage{subcaption}
+
 % 纸张尺寸设置
 % settings for the hyperref and geometry
 \RequirePackage[
@@ -109,6 +127,7 @@
 \setlength{\headsep}{25pt}
 % \setlength{\marginparwidth}{0pt}
 % \setlength{\marginparpush}{0pt}
+
 
 \RequirePackage{hyperref}
 \hypersetup{
@@ -154,18 +173,7 @@
   \numberwithin{table}{section}
 \RequirePackage{amssymb}
 
-\RequirePackage{tocbibind}% 目录自引用
-\RequirePackage{tocloft}
-\setlength{\cftsubsecindent}{0em}
-\renewcommand{\cfttoctitlefont}{\Large\bfseries}
-\renewcommand{\cftaftertoctitle}{}
-\renewcommand{\cftsecdotsep}{\cftsubsecdotsep}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
-\renewcommand{\cftdot}{$\cdot$}
-\renewcommand{\cftsecpagefont}{\normalfont (\ }
-\renewcommand{\cftsecafterpnum}{\ )}
-\renewcommand{\cftsubsecpagefont}{\normalfont (\ }
-\renewcommand{\cftsubsecafterpnum}{\ )}
+
 
 \RequirePackage{makeidx}
 \makeindex
@@ -174,12 +182,12 @@
 
 \RequirePackage{booktabs}
 \RequirePackage{graphicx}
-\RequirePackage{abstract}
 \RequirePackage{fancyhdr}
 \fancyhead{}
 \fancyhead[C]{\textbf{\schoolName\degree 毕业论文}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.6pt}
+
 
 % \newcommand{\}{\}
 \linespread{1.5}                %行距
