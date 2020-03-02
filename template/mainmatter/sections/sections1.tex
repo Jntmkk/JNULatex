@@ -4,11 +4,7 @@ I like u\ucite{Authors2011}
 \lipsum[1-10]
 自动化\index{auto}
 \subsection{h12}
-\lipsum[1-5]
-\subsection{h13}
-\lipsum[1-5]
-\subsubsection{h131}
-\lipsum[1-5]
+
 \clearpage
 \section{通用样式}
 \subsection{字体}
@@ -29,6 +25,20 @@ I like u\ucite{Authors2011}
 % \subsection{}
 \clearpage
 \section[数学样式]{数学样式}
+\subsection{公式}
+    \begin{itemize}
+        \item 行间公式示例:$E=mc^2$,行间公式不编号
+        \item 行内公式示例:\begin{equation}
+            E=mc^2
+        \end{equation}
+        \item 对齐公式:\begin{align}
+            y &=(a-b)^2\\
+            &=a^2+b^2-2ab \notag\\
+            &=(a+b)^2-4ab
+        \end{align}
+        可以控制是否编号\\notag
+    \end{itemize}
+   
 \subsection{定理}
     \begin{theorem}
         我是一条定理！
@@ -85,7 +95,7 @@ I like u\ucite{Authors2011}
 \clearpage
 \section[代码样式]{代码样式}
 \subsection{Python}
-% \subsection{}
+\subsection{C++}
 
 \clearpage
 \section[图表样式]{图表样式}

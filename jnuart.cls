@@ -18,7 +18,7 @@
 % ->> Declare options
 % ---------------------------------------------------------------%
 
-\newcommand{\stypath}{}
+\newcommand{\stypath}{cfg/}
 \newcommand{\thisclassname}{jnuart}
 \newcommand{\githubaddr}{'https://github.com'}
 \newcommand{\githubguideaddr}{'https://github.com'}
@@ -45,6 +45,7 @@
 \RequirePackage{amsmath}
   \numberwithin{figure}{section}
   \numberwithin{table}{section}
+  \numberwithin{equation}{section}
 \RequirePackage{amssymb}
 
 \ifdefstring{\JNU@lang}{cn}{
