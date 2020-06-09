@@ -17,6 +17,21 @@ I like u\ucite{Authors2011}
     % \subsubsection{}
 \subsection{列表}
     \subsubsection{有序列表}
+    \begin{enumerate}[ref=\theenumi.]
+        \item This is question 1 \label{itm:1} 
+        \item \begin{enumerate}[label=(\alph*),
+                                ref=\theenumi(\theenumii)]
+              \item This is question 2.(a) \label{itm:2a} 
+              \item This is question 2.(b)
+              \item \begin{enumerate}[label=-\roman*),
+                                      ref=\theenumii-\theenumiii)]
+                    \item This is question 2.(c)-i) \label{itm:2ci}
+                    \item This is question 2.(c)-ii)
+                    \end{enumerate}
+              \end{enumerate}
+        \end{enumerate}
+        
+        Questions \ref{itm:1}, \ref{itm:2a}, and \ref{itm:2ci} \dots
     \subsubsection{无序列表}
     % \subsubsection{}
 % \subsection{}
@@ -36,7 +51,7 @@ I like u\ucite{Authors2011}
             &=a^2+b^2-2ab \notag\\
             &=(a+b)^2-4ab
         \end{align}
-        可以控制是否编号\\notag
+        可以控制是否编号 
     \end{itemize}
    
 \subsection{定理}
@@ -95,7 +110,26 @@ I like u\ucite{Authors2011}
 \clearpage
 \section[代码样式]{代码样式}
 \subsection{Python}
-\subsection{C++}
+
+\begin{listing}[H]
+    \inputminted[linenos=true]{python}{code/example.py}
+    \caption{Python Hello}
+    \label{py:hello}
+\end{listing}
+\noindent 这是浮动体代码样式引用\ref{py:hello}
+
+\subsection{C/C++}
+\inputminted[xleftmargin=2.5em,
+    framexleftmargin=1.5em,
+    bgcolor=lightgray!10,
+    autogobble=true,
+    numbers=left,
+    frame=none,
+    framesep=2mm,
+    baselinestretch=1.2,
+    breaklines=true]{c}{code/example.c}
+\noindent 普通代码样式
+
 
 \clearpage
 \section[图表样式]{图表样式}

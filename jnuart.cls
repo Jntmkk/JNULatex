@@ -47,6 +47,7 @@
   \numberwithin{table}{section}
   \numberwithin{equation}{section}
 \RequirePackage{amssymb}
+\RequirePackage{tcolorbox}
 
 \ifdefstring{\JNU@lang}{cn}{
     \IfFileExists{\stypath jnucn.cfg}{
@@ -84,6 +85,9 @@
 \AfterEndEnvironment{abstract}{\setabsnumstylefalse\clearpage}
 \AtBeginEnvironment{abstract}{\phantomsection\addcontentsline{toc}{section}{\abstractname}}
 \AfterPreamble{\setcounter{tocdepth}{2}\setcounter{secnumdepth}{4}\pagestyle{empty}}
+
+\BeforeBeginEnvironment{listing}{\tcbset{left*=30pt}\begin{tcolorbox}}%
+\AfterEndEnvironment{listing}{\end{tcolorbox}}%
 
 \RequirePackage{abstract} % load before input file 'jnucom.cfg'
 
@@ -193,6 +197,8 @@
 
 
 
+\RequirePackage{enumitem}
+\setlist{nolistsep}
 
 \RequirePackage{makeidx}
 \makeindex
@@ -213,31 +219,15 @@
 \ziju{0.065}                    %字间距
 
 
-% 首页设置
+\RequirePackage{minted}
 
-% 摘要设置
-
-% 目录设置
-
-% 正文设置
-
-% 参考文献设置
-
-% 索引设置
-
-% 论文清设置
-
-% 致谢设置
-
-% 数学环境样式设置
-
-% 列表设置
-
-% 图标样式设置
-
-% 标题样式设置
-
-% 页眉、页脚样式设置
-
-
-
+\RequirePackage{listings}
+\lstset{numbers=left,
+  numberstyle=\tiny,
+  keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50},
+  frame=shadowbox,
+  rulesepcolor=\color{red!20!green!20!blue!20}
+  }
+\renewcommand{\theFancyVerbLine}{\sffamily
+  \textcolor[rgb]{0.5,0.5,1.0}{\normalsize
+  \oldstylenums{\arabic{FancyVerbLine}}}}
